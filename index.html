@@ -3,102 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inkorrekt.nu — Unika skulpturer</title>
-  <meta name="description" content="Mörk, konstnärlig webshop för unika skulpturer och objekt med svensk kriminalfalls-estetik." />
+  <title>Inkorrekt.nu — Unika objekt</title>
+  <meta name="description" content="Krim-editorial meets konstkatalog. Unika objekt i mörk estetik och begränsad upplaga." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <div class="logo">
-        <span class="logo-main">Inkorrekt.nu</span>
-        <span class="logo-sub">UNIKA SKULPTURER</span>
+  <header class="site-header container">
+    <div class="brand">
+      <svg class="logo-mark" viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8 23h46l-8-8m8 8-8 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+        <circle cx="70" cy="23" r="2.8" fill="currentColor"/>
+      </svg>
+      <div>
+        <div class="logo-text">Inkorrekt.nu</div>
+        <div class="tagline">Unika objekt. Mörk estetik. Begränsad upplaga.</div>
       </div>
-      <nav>
-        <a href="#produkter">Produkter</a>
-        <a href="#om">Om</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
-      <button id="cart-btn" class="cart-btn" aria-label="Öppna kundkorg">
-        🛒 <span id="cart-count">0</span>
-      </button>
     </div>
+    <nav>
+      <a href="#objekt">Objekt</a>
+      <a href="#om">Om</a>
+      <a href="#kontakt">Kontakt</a>
+      <button id="cart-btn" class="cart-btn">KORG <span id="cart-count">0</span></button>
+    </nav>
   </header>
 
-  <section class="hero">
-    <div class="container hero-content">
-      <p class="eyebrow">LIMITED ART OBJECTS</p>
-      <h1>Skulpturer i motljus,<br>skuggor och perception.</h1>
-      <p class="sublead">Unika objekt med svensk kriminalfalls-estetik.</p>
-      <p class="lead">Unika verk i mörk nordisk ton — där form, sanning och berättelse möts i varje detalj.</p>
-      <a class="btn" href="#produkter">Utforska produkter</a>
+  <section class="hero container">
+    <figure class="hero-image">
+      <img src="https://placehold.co/900x1100/0f0f0f/c8a96e?text=OBJEKT+NR.01" alt="Dramatiskt objektfoto" />
+      <figcaption>OBJEKT NR. 01 — BEGRÄNSAT ANTAL</figcaption>
+    </figure>
+    <div class="hero-copy">
+      <p class="kicker">KRIM-EDITORIAL / KONSTKATALOG</p>
+      <h1>OBJEKT MED HISTORIA.</h1>
+      <p class="sub">Varje stycke är ett unikt verk. Inga kopior. Inga kompromisser.</p>
+      <a class="outline-btn" href="#objekt">Se kollektionen</a>
     </div>
   </section>
 
-  <main>
-    <section id="produkter" class="section container">
-      <h2>Utvalda produkter</h2>
-      <div id="product-grid" class="product-grid"></div>
-    </section>
+  <main id="objekt" class="container editorial-grid"></main>
 
-    <section id="om" class="section section-alt">
-      <div class="container">
-        <h2>Om Inkorrekt.nu</h2>
-        <p>
-          Inkorrekt.nu skapar unika byster, figuriner och konstobjekt med tydlig signatur:
-          beige/vita finishar, rå yta och visuella effekter som förändras med ljuset.
-        </p>
-      </div>
-    </section>
-  </main>
+  <section id="om" class="container about">
+    <p>
+      Inkorrekt.nu skapar unika skulpturer och konstobjekt med tydlig signatur —
+      kopplingen till det svenska kriminallandskapet är inte en gimmick, den är kärnan.
+    </p>
+  </section>
 
   <aside id="cart-drawer" class="cart-drawer" aria-hidden="true">
     <div class="cart-head">
       <h3>Kundkorg</h3>
-      <button id="cart-close" class="close-btn">✕</button>
+      <button id="cart-close">✕</button>
     </div>
     <div id="cart-items" class="cart-items"></div>
-    <div class="cart-summary">
+    <div class="cart-foot">
       <p>Totalt: <strong id="cart-total">0 kr</strong></p>
-      <button id="go-checkout" class="btn btn-full">Till kassan</button>
+      <button id="go-checkout" class="outline-btn">Till kassan</button>
     </div>
   </aside>
 
-  <section id="checkout" class="section container checkout" hidden>
-    <h2>Kassa</h2>
-    <p>Du omdirigeras till Stripe Checkout (hosted). Nycklar/price IDs sätts senare.</p>
-    <div id="checkout-items" class="checkout-items"></div>
-    <p class="checkout-total">Att betala: <strong id="checkout-total">0 kr</strong></p>
-    <button id="stripe-checkout" class="btn">Betala med Stripe Checkout</button>
-    <p class="small">Placeholder key används nu: <code>pk_test_placeholder</code></p>
+  <section id="checkout" class="container checkout" hidden>
+    <h2>KASSA</h2>
+    <div id="checkout-items"></div>
+    <p>Att betala: <strong id="checkout-total">0 kr</strong></p>
+    <button id="stripe-checkout" class="outline-btn">Betala med Stripe Checkout</button>
+    <small>Placeholder key aktiv: <code>pk_test_placeholder</code></small>
   </section>
 
-  <footer id="kontakt" class="site-footer">
-    <div class="container footer-wrap">
-      <div>
-        <h3>Kontakta för köp</h3>
-        <p>E-post: <a href="mailto:info@inkorrekt.nu">info@inkorrekt.nu</a></p>
-        <p>Tradera: <a href="https://www.tradera.com/profile/items/placeholder" target="_blank" rel="noopener">Till butik (placeholder)</a></p>
+  <dialog id="product-modal" class="product-modal">
+    <button id="modal-close" class="modal-close">✕</button>
+    <div class="modal-layout">
+      <div id="modal-gallery" class="modal-gallery"></div>
+      <div class="modal-copy">
+        <p id="modal-kicker" class="kicker"></p>
+        <h2 id="modal-title"></h2>
+        <p id="modal-desc"></p>
+        <p id="modal-price" class="modal-price"></p>
+        <button id="modal-add" class="outline-btn">Lägg i korg</button>
       </div>
-      <small>© <span id="year"></span> Inkorrekt.nu</small>
     </div>
-  </footer>
+  </dialog>
 
-  <template id="product-card-template">
-    <article class="card">
-      <img loading="lazy" alt="" />
-      <div class="card-body">
-        <h3></h3>
-        <p class="meta"></p>
-        <p class="desc"></p>
-        <p class="price"></p>
-        <button class="btn add-to-cart">Lägg i kundkorg</button>
-      </div>
-    </article>
-  </template>
+  <footer id="kontakt" class="container footer">
+    <span class="logo-text">Inkorrekt.nu</span>
+    <a href="mailto:info@inkorrekt.nu">info@inkorrekt.nu</a>
+    <span>© <span id="year"></span> Inkorrekt.nu</span>
+  </footer>
 
   <script src="https://js.stripe.com/v3/"></script>
   <script src="script.js"></script>
