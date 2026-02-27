@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inkorrekt.nu — Handgjorda skulpturer</title>
-  <meta name="description" content="Mörk, konstnärlig webshop för handgjorda skulpturer och objekt med svensk kriminalfalls-estetik." />
+  <title>Inkorrekt.nu — Unika skulpturer</title>
+  <meta name="description" content="Mörk, konstnärlig webshop för unika skulpturer och objekt med svensk kriminalfalls-estetik." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -15,13 +15,16 @@
     <div class="container nav-wrap">
       <div class="logo">
         <span class="logo-main">Inkorrekt.nu</span>
-        <span class="logo-sub">HANDGJORDA SKULPTURER</span>
+        <span class="logo-sub">UNIKA SKULPTURER</span>
       </div>
       <nav>
         <a href="#produkter">Produkter</a>
         <a href="#om">Om</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
+      <button id="cart-btn" class="cart-btn" aria-label="Öppna kundkorg">
+        🛒 <span id="cart-count">0</span>
+      </button>
     </div>
   </header>
 
@@ -29,9 +32,9 @@
     <div class="container hero-content">
       <p class="eyebrow">LIMITED ART OBJECTS</p>
       <h1>Skulpturer i motljus,<br>skuggor och perception.</h1>
-      <p class="sublead">Handgjorda objekt med svensk kriminalfalls-estetik.</p>
+      <p class="sublead">Unika objekt med svensk kriminalfalls-estetik.</p>
       <p class="lead">Unika verk i mörk nordisk ton — där form, sanning och berättelse möts i varje detalj.</p>
-      <a class="btn" href="#kontakt">Kontakta för köp</a>
+      <a class="btn" href="#produkter">Utforska produkter</a>
     </div>
   </section>
 
@@ -45,12 +48,33 @@
       <div class="container">
         <h2>Om Inkorrekt.nu</h2>
         <p>
-          Inkorrekt.nu skapar handgjorda byster, figuriner och konstobjekt med tydlig signatur:
+          Inkorrekt.nu skapar unika byster, figuriner och konstobjekt med tydlig signatur:
           beige/vita finishar, rå yta och visuella effekter som förändras med ljuset.
         </p>
       </div>
     </section>
   </main>
+
+  <aside id="cart-drawer" class="cart-drawer" aria-hidden="true">
+    <div class="cart-head">
+      <h3>Kundkorg</h3>
+      <button id="cart-close" class="close-btn">✕</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-summary">
+      <p>Totalt: <strong id="cart-total">0 kr</strong></p>
+      <button id="go-checkout" class="btn btn-full">Till kassan</button>
+    </div>
+  </aside>
+
+  <section id="checkout" class="section container checkout" hidden>
+    <h2>Kassa</h2>
+    <p>Du omdirigeras till Stripe Checkout (hosted). Nycklar/price IDs sätts senare.</p>
+    <div id="checkout-items" class="checkout-items"></div>
+    <p class="checkout-total">Att betala: <strong id="checkout-total">0 kr</strong></p>
+    <button id="stripe-checkout" class="btn">Betala med Stripe Checkout</button>
+    <p class="small">Placeholder key används nu: <code>pk_test_placeholder</code></p>
+  </section>
 
   <footer id="kontakt" class="site-footer">
     <div class="container footer-wrap">
@@ -70,11 +94,13 @@
         <h3></h3>
         <p class="meta"></p>
         <p class="desc"></p>
-        <a class="card-link" href="#kontakt">Kontakta för köp</a>
+        <p class="price"></p>
+        <button class="btn add-to-cart">Lägg i kundkorg</button>
       </div>
     </article>
   </template>
 
+  <script src="https://js.stripe.com/v3/"></script>
   <script src="script.js"></script>
 </body>
 </html>
