@@ -8,7 +8,7 @@ const products = [
     label: 'OBJEKT NR. 01 – BEGRÄNSAT ANTAL',
     short: 'Ansiktet inverteras i motljus. En studie i perception.',
     description: 'Motljus är en unik skulpturallampa (30 cm) med tydlig narrativ nerv. Formen förändras beroende på ljusriktning och placerar betraktaren i ett osäkert mellanrum mellan sanning och tolkning.',
-    image: 'https://placehold.co/1200x900/111111/c8a96e?text=Motljus',
+    image: 'https://images.unsplash.com/photo-1617791160536-598cf32026fb?w=800&q=80',
     gallery: [
       'https://placehold.co/800x600/111111/c8a96e?text=Motljus+01',
       'https://placehold.co/800x600/111111/c8a96e?text=Motljus+02',
@@ -23,7 +23,7 @@ const products = [
     label: 'OBJEKT NR. 02',
     short: 'Kompakt form med rå yta och stark siluett.',
     description: 'En unik figurin i liten skala med tydlig handgjord karaktär. Objektet bär spår av processen och är avsett att stå nära ögat, som ett fragment ur ett större bildarkiv.',
-    image: 'https://placehold.co/1200x900/111111/c8a96e?text=Figurin',
+    image: 'https://images.unsplash.com/photo-1544980919-e17526d3e6c0?w=800&q=80',
     gallery: [
       'https://placehold.co/800x600/111111/c8a96e?text=Figurin+01',
       'https://placehold.co/800x600/111111/c8a96e?text=Figurin+02'
@@ -36,7 +36,7 @@ const products = [
     label: 'OBJEKT NR. 03',
     short: 'Signaturgrafik som fungerar som objekt i sig.',
     description: 'En unik signaturförpackning/grafik med tabloid-ton och arkivestetik. Text och layout bär lika mycket vikt som materialet och blir en del av verket.',
-    image: 'https://placehold.co/1200x900/111111/c8a96e?text=Signatur',
+    image: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80',
     gallery: [
       'https://placehold.co/800x600/111111/c8a96e?text=Signatur+01',
       'https://placehold.co/800x600/111111/c8a96e?text=Signatur+02'
@@ -49,7 +49,7 @@ const products = [
     label: 'OBJEKT NR. 04',
     short: 'Beige/vit finish med textur och kylig tyngd.',
     description: 'En serie unika byster och ansiktsskulpturer i beige/vit finish. Ytan är medvetet ojämn för att fånga ljus och skugga på ett sätt som ger varje verk en egen närvaro.',
-    image: 'https://placehold.co/1200x900/111111/c8a96e?text=Byster',
+    image: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=800&q=80',
     gallery: [
       'https://placehold.co/800x600/111111/c8a96e?text=Byst+01',
       'https://placehold.co/800x600/111111/c8a96e?text=Byst+02',
@@ -71,14 +71,17 @@ function renderGrid() {
   root.innerHTML = '';
   products.forEach((p, idx) => {
     const card = document.createElement('article');
-    card.className = `editorial-card ${idx % 2 === 0 ? 'large' : 'small'}`;
+    card.className = 'product-card';
+    card.style.animationDelay = `${idx * 0.1}s`;
     card.innerHTML = `
-      <img src="${p.image}" alt="${p.name}" />
-      <div class="overlay">
-        <p class="kicker">${p.label}</p>
-        <h3>${p.name}</h3>
-        <p>${p.short}</p>
-        <a href="#" data-id="${p.id}">→ SE OBJEKT</a>
+      <div class="product-media">
+        <img src="${p.image}" alt="${p.name}" />
+        ${p.id === 'motljus' ? '<span class="badge-new">NYTT</span>' : ''}
+      </div>
+      <div class="product-meta">
+        <h3 class="product-name">${p.name}</h3>
+        <p class="product-price">${formatSEK(p.price)}</p>
+        <a class="product-link" href="#" data-id="${p.id}">→ SE OBJEKT</a>
       </div>`;
     card.querySelector('a').addEventListener('click', (e) => {
       e.preventDefault();
@@ -160,7 +163,6 @@ function openProductModal(id) {
 }
 
 function setupEvents() {
-  document.getElementById('year').textContent = new Date().getFullYear();
   document.getElementById('cart-btn').addEventListener('click', () => openCart(true));
   document.getElementById('cart-close').addEventListener('click', () => openCart(false));
   document.getElementById('go-checkout').addEventListener('click', () => {
